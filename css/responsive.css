@@ -1,0 +1,196 @@
+/* css/responsive.css */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    h1 { font-size: 2.8em; }
+    h2 { font-size: 2.2em; }
+    h3 { font-size: 1.6em; }
+
+    .hero-section .container {
+        flex-direction: column-reverse; /* Image on top, content below */
+        text-align: center;
+    }
+
+    .hero-content, .hero-image {
+        max-width: 100%; /* Allow content and image to take full width */
+    }
+
+    .hero-image {
+        justify-content: center; /* Center image */
+        margin-bottom: var(--spacing-md);
+    }
+
+    .hero-image img {
+        max-width: 80%; /* Smaller image on tablet */
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .ai-analyzer-preview-section .container,
+    .about-preview-section .container {
+        flex-direction: column; /* Content on top, image below */
+        text-align: center;
+    }
+
+    .ai-analyzer-preview-section:nth-of-type(odd) .container {
+        flex-direction: column; /* Ensure image is always below content on smaller screens */
+    }
+
+    .ai-preview-content, .about-content,
+    .ai-preview-image, .about-image {
+        max-width: 100%;
+    }
+
+    .ai-preview-image img, .about-image img {
+        margin-top: var(--spacing-md);
+        max-width: 80%;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+/* Mobile (320px - 767px) */
+@media (max-width: 767px) {
+    /* Header adjustments */
+    .main-header .main-nav {
+        display: none; /* Hide desktop nav */
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--bg-light);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: var(--spacing-sm) 0;
+        border-top: 1px solid var(--border-color-light);
+        transition: transform var(--transition-speed);
+        transform: translateY(-100%);
+    }
+
+    body.dark-mode .main-header .main-nav {
+        background-color: #2d3748;
+        border-top: 1px solid var(--border-color-dark);
+    }
+
+    .main-header .main-nav.active {
+        display: flex;
+        transform: translateY(0);
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        padding: 0 var(--spacing-sm);
+    }
+
+    .main-nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 10px 0;
+    }
+    
+    .mobile-menu-toggle {
+        display: block; /* Show mobile menu toggle */
+    }
+
+    .main-header .container {
+        justify-content: space-between;
+    }
+
+    .dark-mode-toggle {
+        order: 1; /* Place dark mode toggle first for easier access */
+    }
+    
+    .logo {
+        flex-grow: 1; /* Allow logo to take available space */
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    h3 { font-size: 1.4em; }
+
+    section {
+        padding: var(--spacing-lg) 0;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .hero-actions {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+    .hero-image img {
+        max-width: 90%;
+    }
+
+    .services-grid, .testimonials-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+
+    .ai-preview-content h2, .about-content h2 {
+        font-size: 2.2em;
+    }
+    .ai-preview-content p, .about-content p {
+        font-size: 1em;
+    }
+    .ai-preview-image img, .about-image img {
+        max-width: 90%;
+    }
+
+    .cta-section h2 {
+        font-size: 2.5em;
+    }
+    .cta-section p {
+        font-size: 1em;
+    }
+    .cta-buttons {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-col {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+        width: 80%; /* Make newsletter form narrower */
+        margin: var(--spacing-xs) auto 0;
+    }
+
+    .newsletter-form input, .newsletter-form button {
+        border-radius: var(--border-radius-sm);
+        margin-bottom: var(--spacing-xs);
+        width: 100%;
+    }
+    .newsletter-form button {
+        margin-left: 0;
+    }
+}

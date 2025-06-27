@@ -1,0 +1,113 @@
+/* css/animations.css */
+
+/* General Hover Effects */
+.btn:hover,
+.service-card:hover,
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px; /* Adjust as needed */
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-blue);
+    transition: width var(--transition-speed);
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    width: 100%;
+}
+
+/* Section Fade In (on scroll - requires JavaScript for full effect) */
+.section-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.section-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Glassmorphism Effect (for elements like cards or specific sections) */
+/* This is a more advanced effect and can be applied to specific elements.
+   For simplicity, we'll suggest applying it to elements like a subtle background
+   or modal, rather than every card by default.
+   Example:
+   .glass-effect-card {
+       background: rgba(255, 255, 255, 0.1);
+       backdrop-filter: blur(10px);
+       -webkit-backdrop-filter: blur(10px);
+       border: 1px solid rgba(255, 255, 255, 0.2);
+       box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+       border-radius: 10px;
+   }
+*/
+
+/* Gradient Backgrounds (already in hero and CTA) */
+/* You can apply more specific gradient backgrounds if desired */
+
+/* Icon Animations (using Lucide icons) */
+/* You can target specific icons for subtle animations */
+.service-card i {
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.service-card:hover i {
+    color: var(--secondary-blue);
+    transform: scale(1.1);
+}
+
+/* Dark/Light Mode Toggle Animation */
+.dark-mode-toggle {
+    transition: transform 0.3s ease-in-out;
+    padding: 8px; /* Give it some padding for better click area */
+    border-radius: 50%; /* Make it circular */
+    border: 1px solid transparent; /* Subtle border */
+}
+
+.dark-mode-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode-toggle .icon-moon,
+.dark-mode-toggle .icon-sun {
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+body:not(.dark-mode) .dark-mode-toggle .icon-sun {
+    opacity: 0;
+    transform: rotate(-90deg);
+    position: absolute; /* To overlap icons */
+}
+
+body.dark-mode .dark-mode-toggle .icon-moon {
+    opacity: 0;
+    transform: rotate(90deg);
+    position: absolute; /* To overlap icons */
+}
+
+/* Mobile Menu Toggle Animation */
+.mobile-menu-toggle i {
+    transition: transform 0.3s ease-in-out;
+}
+
+.mobile-menu-toggle.active i {
+    transform: rotate(90deg); /* Example: rotate icon when active */
+}
+
+/* Loading animations and skeleton screens will require JavaScript and more complex CSS/HTML.
+   We'll address these in later steps if needed, as they require more advanced implementations. */
