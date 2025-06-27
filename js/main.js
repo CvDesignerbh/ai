@@ -46,8 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Add Intersection Observer for scroll animations (optional, but good for modern feel) ---
-    // This will make sections fade in as they come into view.
+    // Intersection Observer for scroll animations
     const sections = document.querySelectorAll('section');
 
     const observerOptions = {
@@ -61,17 +60,41 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('section-visible');
                 entry.target.classList.remove('section-hidden'); // Ensure it's removed if it was hidden
-                observer.unobserve(entry.target); // Stop observing once visible
+                // observer.unobserve(entry.target); // Optional: Stop observing once visible if you only want it to animate once
+            } else {
+                // If you want animation to re-play on scroll out/in, re-add hidden class
+                // entry.target.classList.remove('section-visible');
+                // entry.target.classList.add('section-hidden');
             }
         });
     }, observerOptions);
 
     sections.forEach(section => {
-        section.classList.add('section-hidden'); // Initially hide sections
+        section.classList.add('section-hidden'); // Initially hide sections for animation
         sectionObserver.observe(section);
     });
 
-    // Initialize Lucide icons on demand if not already called in HTML
+    // FAQ Accordion (for services.html and potentially other pages)
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            const content = header.nextElementSibling; // The accordion-content div
+            header.classList.toggle('active');
+
+            if (header.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + 'px'; // Expand to full height
+                content.style.paddingTop = '15px'; // Adjust padding after expansion
+                content.style.paddingBottom = '15px';
+            } else {
+                content.style.maxHeight = '0';
+                content.style.paddingTop = '0';
+                content.style.paddingBottom = '0';
+            }
+        });
+    });
+
+    // Initialize Lucide icons on demand (ensure this is called after elements are in DOM)
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
     }
